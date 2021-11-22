@@ -1,0 +1,93 @@
+SELECT
+        ToolInfoT.IDToolInfoT AS ID             ,
+        ToolInfoT.ToolName                      ,
+        ToolInfoT.PartNumber                    ,
+        ToolInfoT.SerialNumber                  ,
+        ToolCalibrationDataT.NextCalibrationDate,
+        ToolLocationInfoT.ToolBoxName           ,
+        ToolInfoT.ToolType                      ,
+        ToolLocationInfoT.KitName               ,
+        ToolLocationInfoT.PrintList             ,
+        ToolInfoT.Quantity                      ,
+        ToolLocationInfoT.IsInPrintList
+FROM
+        ToolLocationInfoT
+INNER JOIN
+        (ToolCalibrationDataT
+INNER JOIN
+        ToolInfoT
+ON
+        ToolCalibrationDataT.IDToolCalibrationDataT = ToolInfoT.IDToolCalbrationDataT)
+ON
+        ToolLocationInfoT.IDToolLocationInfoT = ToolInfoT.IDToolLocationInfoT
+WHERE
+        (((
+                                ToolInfoT.ToolName) LIKE "*" & [Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolName_txt_filter] & "*")
+        AND     ((
+                                ToolInfoT.PartNumber) LIKE "*" & [Forms]![PrintList_ToolList_SubFormF]![PrintList_PartNumber_txt_filter] & "*")
+        AND     ((
+                                ToolInfoT.SerialNumber) LIKE "*" & [Forms]![PrintList_ToolList_SubFormF]![PrintList_SerialNumber_txt_filter] & "*")
+        AND     ((
+                                ToolLocationInfoT.ToolBoxName)=[Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolBox_FilterCB])
+        AND     ((
+                                ToolInfoT.ToolType)=[Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolType_FilterCB])
+        AND     ((
+                                ToolLocationInfoT.KitName)=[Forms]![PrintList_ToolList_SubFormF]![PrintList_KitName_FilterCB])
+        AND     ((
+                                ToolLocationInfoT.PrintList)=[Forms]![PrintList_ToolList_SubFormF]![PrintList_PrintList_FilterCB]))
+OR      (((
+                                ToolInfoT.ToolName) LIKE "*" & [Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolName_txt_filter] & "*")
+        AND     ((
+                                ToolInfoT.PartNumber) LIKE "*" & [Forms]![PrintList_ToolList_SubFormF]![PrintList_PartNumber_txt_filter] & "*")
+        AND     ((
+                                ToolInfoT.SerialNumber) LIKE "*" & [Forms]![PrintList_ToolList_SubFormF]![PrintList_SerialNumber_txt_filter] & "*")
+        AND     ((
+                                ToolLocationInfoT.ToolBoxName)=[Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolBox_FilterCB])
+        AND     ((
+                                ToolInfoT.ToolType)=[Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolType_FilterCB])
+        AND     ((
+                                ToolLocationInfoT.KitName)=[Forms]![PrintList_ToolList_SubFormF]![PrintList_KitName_FilterCB])
+        AND     ((
+                                [Forms]![PrintList_ToolList_SubFormF]![PrintList_PrintList_FilterCB]) IS NULL))
+OR      (((
+                                ToolInfoT.ToolName) LIKE "*" & [Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolName_txt_filter] & "*")
+        AND     ((
+                                ToolInfoT.PartNumber) LIKE "*" & [Forms]![PrintList_ToolList_SubFormF]![PrintList_PartNumber_txt_filter] & "*")
+        AND     ((
+                                ToolInfoT.SerialNumber) LIKE "*" & [Forms]![PrintList_ToolList_SubFormF]![PrintList_SerialNumber_txt_filter] & "*")
+        AND     ((
+                                ToolLocationInfoT.ToolBoxName)=[Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolBox_FilterCB])
+        AND     ((
+                                ToolInfoT.ToolType)=[Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolType_FilterCB])
+        AND     ((
+                                [Forms]![PrintList_ToolList_SubFormF]![PrintList_KitName_FilterCB]) IS NULL))
+OR      (((
+                                ToolInfoT.ToolName) LIKE "*" & [Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolName_txt_filter] & "*")
+        AND     ((
+                                ToolInfoT.PartNumber) LIKE "*" & [Forms]![PrintList_ToolList_SubFormF]![PrintList_PartNumber_txt_filter] & "*")
+        AND     ((
+                                ToolInfoT.SerialNumber) LIKE "*" & [Forms]![PrintList_ToolList_SubFormF]![PrintList_SerialNumber_txt_filter] & "*")
+        AND     ((
+                                ToolLocationInfoT.ToolBoxName)=[Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolBox_FilterCB])
+        AND     ((
+                                [Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolType_FilterCB]) IS NULL))
+OR      (((
+                                ToolInfoT.ToolName) LIKE "*" & [Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolName_txt_filter] & "*")
+        AND     ((
+                                ToolInfoT.PartNumber) LIKE "*" & [Forms]![PrintList_ToolList_SubFormF]![PrintList_PartNumber_txt_filter] & "*")
+        AND     ((
+                                ToolInfoT.SerialNumber) LIKE "*" & [Forms]![PrintList_ToolList_SubFormF]![PrintList_SerialNumber_txt_filter] & "*")
+        AND     ((
+                                [Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolBox_FilterCB]) IS NULL))
+OR      (((
+                                ToolInfoT.ToolName) LIKE "*" & [Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolName_txt_filter] & "*")
+        AND     ((
+                                ToolInfoT.PartNumber) LIKE "*" & [Forms]![PrintList_ToolList_SubFormF]![PrintList_PartNumber_txt_filter] & "*")
+        AND     ((
+                                [Forms]![PrintList_ToolList_SubFormF]![PrintList_SerialNumber_txt_filter]) IS NULL))
+OR      (((
+                                ToolInfoT.ToolName) LIKE "*" & [Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolName_txt_filter] & "*")
+        AND     ((
+                                [Forms]![PrintList_ToolList_SubFormF]![PrintList_PartNumber_txt_filter]) IS NULL))
+OR      (((
+                                [Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolName_txt_filter]) IS NULL));

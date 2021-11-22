@@ -1,0 +1,33 @@
+SELECT
+        ToolInfoT.IDToolInfoT AS ID             ,
+        ToolInfoT.ToolName                      ,
+        ToolInfoT.PartNumber                    ,
+        ToolInfoT.SerialNumber                  ,
+        ToolCalibrationDataT.NextCalibrationDate,
+        ToolLocationInfoT.ToolBoxName           ,
+        ToolInfoT.ToolType                      ,
+        ToolLocationInfoT.KitName               ,
+        ToolLocationInfoT.PrintList             ,
+        ToolInfoT.Quantity                      ,
+        ToolLocationInfoT.IsInPrintList
+FROM
+        ToolLocationInfoT
+INNER JOIN
+        (ToolCalibrationDataT
+INNER JOIN
+        ToolInfoT
+ON
+        ToolCalibrationDataT.IDToolCalibrationDataT = ToolInfoT.IDToolCalbrationDataT)
+ON
+        ToolLocationInfoT.IDToolLocationInfoT = ToolInfoT.IDToolLocationInfoT
+WHERE
+        (((
+                                ToolLocationInfoT.ToolBoxName)=[Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolBox_FilterCB])
+        AND     ((
+                                ToolInfoT.ToolType)=[Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolType_FilterCB]))
+OR      (((
+                                ToolLocationInfoT.ToolBoxName)=[Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolBox_FilterCB])
+        AND     ((
+                                [Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolType_FilterCB]) IS NULL))
+OR      (((
+                                [Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolBox_FilterCB]) IS NULL));
