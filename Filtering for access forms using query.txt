@@ -1,11 +1,18 @@
 //This it for text box \/
+Like "*" & [Forms]![YourFormName]![YourTextBoxName] & "*" or [Forms]![YourFormName]![YourTextBoxName] is null
+
 Like "*" & [Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolName_txt_filter] & "*" or [Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolName_txt_filter] is null
 
 Like "*" & [Forms]![PrintList_ToolList_SubFormF]![PrintList_PartNumber_txt_filter] & "*" or [Forms]![PrintList_ToolList_SubFormF]![PrintList_PartNumber_txt_filter] is null
 
 Like "*" & [Forms]![PrintList_ToolList_SubFormF]![PrintList_SerialNumber_txt_filter] & "*" or [Forms]![PrintList_ToolList_SubFormF]![PrintList_SerialNumber_txt_filter] is null
 
+
+
+
 //This is for combo box \/
+[Forms]![YourFormName]![YourComboBoxName] or [Forms]![YourFormName]![YourComboBoxName] is null
+
 [Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolBox_FilterCB] or [Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolBox_FilterCB] is null
 
 [Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolType_FilterCB] or [Forms]![PrintList_ToolList_SubFormF]![PrintList_ToolType_FilterCB] is null
